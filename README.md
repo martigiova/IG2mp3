@@ -35,6 +35,34 @@ If you don’t have Git, download the ZIP from your repo hosting service, unzip 
 
 ---
 
+## 2.5 Windows quick start (no execution-policy issues)
+
+PowerShell may block the `Activate.ps1` script if your company PC enforces a strict policy. Two easy alternatives:
+
+### Option A – Double-click helper
+
+1. Open File Explorer inside the IG2mp3 folder.
+2. Double-click `run_windows.bat` (or right-click → *Run as administrator* if required).
+3. Wait while the script creates `.venv`, installs dependencies, and launches the GUI.  
+   - The terminal window must stay open; close the GUI to stop the script.
+4. Next time, just run `run_windows.bat` again; it reuses the same environment.
+
+The `.bat` file uses only classic Command Prompt commands (`cmd.exe`), so PowerShell policies no longer apply.
+
+### Option B – Manual commands without activating the venv
+
+Run these in **Command Prompt** (not PowerShell) from the IG2mp3 folder:
+
+```cmd
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+.venv\Scripts\python.exe reels_audio_box.py
+```
+
+By calling `.venv\Scripts\python.exe` directly, you never have to run `activate.bat` or `Activate.ps1`, so no policy prompts appear.
+
+---
+
 ## 3. Step-by-step installation (friendly version)
 
 > The steps below use a Python virtual environment so that IG2mp3 stays isolated from your other tools. You can skip the venv if you know what you’re doing, but beginners should keep it.
